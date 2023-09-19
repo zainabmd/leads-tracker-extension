@@ -13,8 +13,12 @@ function renderLeads(){
     let listItems="";
 
 for(let i=0;i<myLeads.length;i++){
-listItems+="<li>"+myLeads[i]+"</li>";
-/* 2nd way to do above line
+listItems+=
+    `<li>
+        <a target='_blank' href="${myLeads[i]}"/>
+        ${myLeads[i]}
+    </li>`;
+/* 2nd/long way to do above line
 const li=document.createElement("li");
 li.textContent+=myLeads[i];
 ulEl.append(li); */
