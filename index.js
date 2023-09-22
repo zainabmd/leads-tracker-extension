@@ -4,10 +4,14 @@ const inputF=document.getElementById("input-field")
 const inputBtn=document.getElementById("input-btn")
 const ulEl=document.getElementById("ul");
 
+let LSLeads=JSON.parse(localStorage.getItem("myLeads"));
+
 inputBtn.addEventListener('click',function(){
     myLeads.push(inputF.value);
-    renderLeads();
     inputF.value="";
+    localStorage.setItem("myLeads",JSON.stringify(myLeads));
+    renderLeads();
+
 })
 function renderLeads(){
     let listItems="";
