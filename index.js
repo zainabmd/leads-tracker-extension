@@ -4,22 +4,22 @@ const inputF=document.getElementById("input-field")
 const inputBtn=document.getElementById("input-btn")
 const ulEl=document.getElementById("ul");
 const delBtn=document.getElementById("delete-btn");
-const tabBtn=document.getElementById("savetab-btn")
-
 const leadsFromLocalStorage=JSON.parse(localStorage.getItem("myLeads"));
-
-tabBtn.addEventListener("click",function(){
-    chrome.tabs.query({active:true, currentWindow:true}, function(tabs){
-        myLeads.push(tabs[0].url);
-        localStorage.setItem (JSON.stringify(myLeads) )
-        render(myLeads);
-    })
-})
+const tabBtn=document.getElementById("savetab-btn")
 
 if(leadsFromLocalStorage){
     myLeads=leadsFromLocalStorage;
     render(myLeads);
 }
+
+tabBtn.addEventListener("click",function(){
+    chrome.tabs.query({active:true, currentWindow:true}, function(tabs){
+        myLeads.push(tabs[0].url);
+        localStorage.setItem ("myLeads", JSON.stringify(myLeads) )
+        render(myLeads);
+    })
+})
+
 function render(leads){
     let listItems="";
 
